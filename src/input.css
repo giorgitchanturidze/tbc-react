@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'tbc';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/file.woff2') format('woff2');
+}
+
+body {
+    font-family: 'tbc', Arial, Helvetica, sans-serif;
+    --scrollbar-width: 0px;
+}
