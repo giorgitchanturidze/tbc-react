@@ -20,12 +20,24 @@ navigation.addEventListener('click', (e) => {
 });
 
 const header = document.querySelector('header');
+let oldScroll = 0; // Initialize oldScroll variable
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) {
-        // data position top
+    const currentScroll = window.scrollY; // Get current scroll position
+
+    // Set data position based on scroll
+    if (currentScroll > 0) {
         header.dataset.position = 'center';
     } else {
         header.dataset.position = 'top';
     }
+
+    // Check if user is scrolling up or down
+    if (oldScroll > currentScroll) {
+        header.dataset.hidden = 'false';
+    } else {
+        header.dataset.hidden = 'true';
+    }
+
+    oldScroll = currentScroll; // Update oldScroll for the next scroll event
 });
