@@ -11,6 +11,8 @@
 }
 
 body {
-    font-family: 'tbc', Arial, Helvetica, sans-serif;
-    --scrollbar-width: 0px;
+    font-family: tbc, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    /* Text color lightwhite */
+    color: #f4f4f4;
 }
