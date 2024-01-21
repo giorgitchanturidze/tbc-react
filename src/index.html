@@ -13,7 +13,7 @@
 <body class="bg-primary">
   <!-- Header -->
   <header data-position="top"
-    class="bg-secondary/95 data-[position=top]:bg-secondary/100 p-5 sticky top-0 transition-all duration-300 ease-in-out h-[69px] lg:h-[84px]">
+    class="bg-secondary/95 z-10 data-[position=top]:bg-secondary/100 p-5 sticky top-0 transition-all duration-300 ease-in-out h-[69px] lg:h-[84px]">
     <!-- Header Container -->
     <div class="flex justify-between lg:items-center w-full max-w-[980px] mx-auto">
       <!-- logo -->
@@ -94,7 +94,7 @@
       </div>
       <!-- Navigation -->
       <nav
-        class="pt-20 lg:pt-0 absolute lg:relative w-full overflow-hidden max-w-0 transition-all ease-in-out duration-300 peer-[.active]:max-w-[calc(100%-120px)] lg:max-w-[454px] right-0 top-0 lg:block bg-darkGrey h-screen lg:h-full lg:bg-transparent z-20">
+        class="pt-20 lg:pt-0 absolute lg:relative w-full overflow-hidden max-w-0 transition-all ease-in-out duration-300 peer-[.active]:max-w-[calc(100%-120px)] lg:max-w-[454px] right-0 top-0 lg:block bg-darkGrey h-screen lg:h-full lg:bg-transparent z-20  lg:z-10">
         <ul class="flex w-full flex-col lg:flex-row lg:justify-between lg:items-center items-end min-w-0 *:text-white">
           <li class="group cursor-pointer pr-[10px] lg:pr-0"><a
               class="group-hover:text-blueSky text-sm leading-[52px] lg:leading-[26px] group-[.active]:text-blueSky transition duration-[400ms] ease-linear"
@@ -110,11 +110,12 @@
               href="#">რისკები</a></li>
         </ul>
       </nav>
-      <div class="absolute hidden peer-[.active]:block bg-primary/60 w-screen h-screen top-0 left-0 z-10"></div>
+      <div class="absolute hidden peer-[.active]:block bg-primary/60 w-screen h-screen top-0 left-0 lg:hidden z-10">
+      </div>
     </div>
   </header>
   <!-- Main -->
-  <main class="h-screen flex flex-col justify-between">
+  <main class="flex flex-col justify-between">
     <!-- Hero Section -->
     <section class="w-full relative">
       <!-- Desktop hero section image -->
@@ -137,7 +138,7 @@
         </div>
       </div>
     </section>
-    <!-- CTA -->
+    <!-- CTA Section -->
     <section class="w-full bg-lightgrey px-5 py-8 lg:py-14">
       <div class="max-w-[980px] mx-auto">
         <h1 class="text-base lg:text-[28px] lg:leading-[45px] leading-[26px] mb-8">
@@ -150,17 +151,18 @@
             მეტი</span></a>
       </div>
     </section>
-    <!-- Courses -->
+    <!-- Courses Section -->
     <section>
       <div class="w-full pt-5 pb-[45px] lg:pt-[35px] lg:pb-[58px] max-w-[980px] mx-auto lg:px-0 px-5">
-        <h6>
+        <h6 class="text-[24px] leading-[34px]">
           სასწავლო კურსები
         </h6>
         <div class="flex flex-wrap justify-center mt-[26px] lg:mt-[65px] gap-[25px] lg:gap-10">
           <!-- 1 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -195,9 +197,10 @@
           </div>
 
           <!-- 2 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -232,9 +235,10 @@
           </div>
 
           <!-- 3 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -269,9 +273,10 @@
           </div>
 
           <!-- 4 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -306,9 +311,10 @@
           </div>
 
           <!-- 5 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -343,9 +349,10 @@
           </div>
 
           <!-- 6 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -380,9 +387,10 @@
           </div>
 
           <!-- 7 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -417,9 +425,10 @@
           </div>
 
           <!-- 8 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -454,9 +463,10 @@
           </div>
 
           <!-- 9 card -->
-          <div class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
+          <div
+            class="w-[280px] lg:w-[300px] flex flex-col h-[290px] lg:h-[414px]  rounded-[6px] border border-colorborder overflow-hidden">
             <!-- Image container -->
-            <div class="h-[140px] lg:h-[150px] w-full pb-[26px] lg:pb-[35px] flex">
+            <div class="h-[140px] lg:h-[150px] w-full mb-[26px] lg:mb-[35px] flex">
               <img class="w-full h-full object-cover object-center"
                 src="https://static.wixstatic.com/media/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg/v1/fill/w_300,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dd97f4_6f93a2a737b14a32ae26b17f51e6dbf1~mv2.jpg"
                 alt="ios">
@@ -493,7 +503,67 @@
         </div>
       </div>
     </section>
-    <section>4</section>
+    <!-- Slider -->
+    <section class="bg-lightgrey relative px-5 pt-[21px] lg:py-9 ">
+
+      <div class="max-w-[980px] mx-auto w-full mb-[13px] lg:mb-[33px]">
+        <h3 class="text-[18px] leading-[28px]">პროექტის პარტნიორები</h3>
+      </div>
+      <!-- Sliders -->
+      <div class="lg:h-[224px] h-[371px] w-full relative">
+        <div class="flex w-full h-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+          <!-- Slide 1 -->
+          <div
+            class="snap-center w-full shrink-0 h-full flex flex-col justify-center items-center gap-[42px] lg:flex-row lg:gap-[122px]">
+            <img class="h-[66px] w-[219px]"
+              src="https://static.wixstatic.com/media/93e8a3_a356bb7d201f4f47870683655e9e4120~mv2.png/v1/fill/w_246,h_74,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Asset%204_2x_edited.png"
+              alt="USAID logo">
+            <img class="h-[66px] w-[220px]"
+              src="https://static.wixstatic.com/media/93e8a3_eaf33552ffd5463e96a5f776dda00111~mv2.png/v1/fill/w_400,h_132,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/White%20horiz.png"
+              alt="space int logo">
+            <img class="h-[45px] w-[250px]"
+              src="https://static.wixstatic.com/media/93e8a3_ae4ade72135b4c7eaa531290232fe5aa~mv2.png/v1/fill/w_500,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/93e8a3_ae4ade72135b4c7eaa531290232fe5aa~mv2.png"
+              alt="tineti logo">
+          </div>
+          <!-- Slide 2 -->
+          <div
+            class="snap-center w-full shrink-0 h-full flex flex-col justify-center items-center gap-[42px] lg:flex-row lg:gap-[122px]">
+            <img class="h-[52px] w-[180px]"
+              src="https://static.wixstatic.com/media/93e8a3_b595f31239344928802dd7135813e17c~mv2.png/v1/fill/w_360,h_104,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Tegeta%20logo%20geo.png"
+              alt="tegeta logo">
+            <img class="h-[41px] w-[131px]"
+              src="https://static.wixstatic.com/media/93e8a3_aca86c1c067d4f8585c3c2cb1b0a0178~mv2.png/v1/fill/w_262,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/93e8a3_aca86c1c067d4f8585c3c2cb1b0a0178~mv2.png"
+              alt="spectre logo">
+            <img class="h-[67px] w-[220px]"
+              src="https://static.wixstatic.com/media/93e8a3_b6ed8fb2602e4670bc83d1fd4a7d9283~mv2.png/v1/fill/w_440,h_134,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/MicrosoftTeams-image%20(9).png"
+              alt="TBC lizingi logo">
+          </div>
+          <!-- Slide 3 -->
+          <div
+            class="snap-center w-full shrink-0 h-full flex flex-col justify-center items-center gap-[42px] lg:flex-row lg:gap-[122px]">
+            <img class="h-[65px] w-[232px]"
+              src="https://static.wixstatic.com/media/93e8a3_ef7860c1a2854f1c8fc20f867ffa30ab~mv2.png/v1/fill/w_464,h_130,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/UFC%20GEO%20PNG_edited.png"
+              alt="ufc logo">
+          </div>
+        </div>
+        <!-- Dots -->
+        <div
+          class="absolute bottom-[21px] left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-[10px]">
+          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
+          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
+          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
+        </div>
+        <!-- Arrows -->
+        <div class="absolute hidden lg:flex top-1/2 left-0 transform -translate-y-1/2 justify-between items-center gap-[10px] w-full  h-10">
+          <div class="flex w-[18px] h-[35px] justify-center items-center">
+            <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41"><path class="stroke-white" d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path></svg>
+          </div>
+          <div class="flex w-[18px] h-[35px] justify-center items-center">
+            <svg class="fill-white rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41"><path class="stroke-white" d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path></svg>
+          </div>
+        </div>
+      </div>
+    </section>
     <section>3</section>
     <section>4</section>
     <section>3</section>
