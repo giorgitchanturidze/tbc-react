@@ -12,6 +12,8 @@ module.exports = {
         blueSky: "#00a3e0",
         darkwhite: "#f4f4f4",
         colorborder: "#555555",
+        tbc: "#00AEF3",
+        tbc2: "#8C8C8C",
       },
     },
   },

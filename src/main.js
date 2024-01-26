@@ -61,6 +61,52 @@ window.addEventListener('load', () => {
     });
 });
 
+const accordions = document.querySelector('.accordions');
+
+accordions.addEventListener('click', (e) => {
+    if (e.target.classList.contains('accordion')) {
+        e.target.classList.toggle('active');
+    }
+    const acoordioItems = accordions.querySelectorAll('.accordion');
+    acoordioItems.forEach((item) => {
+        if (item !== e.target) {
+            item.classList.remove('active');
+        }
+    });
+});
+
+const privacy = document.querySelectorAll('.privacy');
+const privacyDetailed = document.querySelector('.privacy-detailed');
+
+privacy.forEach((item) => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        privacyDetailed.classList.toggle('active');
+        // give active class to privacyDetailed children after 0.5s
+        setTimeout(() => {
+            const children = privacyDetailed.querySelectorAll('*');
+            children.forEach((child) => {
+                child.classList.toggle('active');
+            });
+        }, 300);
+    });
+});
+
+const closePrivacyButtons = document.querySelectorAll('.close-privacy');
+
+closePrivacyButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const children = privacyDetailed.querySelectorAll('*');
+        children.forEach((child) => {
+            child.classList.toggle('active');
+        });
+        setTimeout(() => {
+            privacyDetailed.classList.toggle('active');
+        }, 300);
+    });
+});
+
 
 // ==================================
 
