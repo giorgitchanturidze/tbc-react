@@ -77,6 +77,9 @@ accordions.addEventListener('click', (e) => {
 
 const privacy = document.querySelectorAll('.privacy');
 const privacyDetailed = document.querySelector('.privacy-detailed');
+// Privacy detailed children
+const privacyDetailedChildren = document.querySelector('.privacy-detailed-child');
+console.log(privacyDetailedChildren);
 
 privacy.forEach((item) => {
     item.addEventListener('click', (e) => {
@@ -84,10 +87,7 @@ privacy.forEach((item) => {
         privacyDetailed.classList.toggle('active');
         // give active class to privacyDetailed children after 0.5s
         setTimeout(() => {
-            const children = privacyDetailed.querySelectorAll('*');
-            children.forEach((child) => {
-                child.classList.toggle('active');
-            });
+            privacyDetailedChildren.classList.toggle('active');
         }, 300);
     });
 });
@@ -97,83 +97,175 @@ const closePrivacyButtons = document.querySelectorAll('.close-privacy');
 closePrivacyButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
-        const children = privacyDetailed.querySelectorAll('*');
-        children.forEach((child) => {
-            child.classList.toggle('active');
-        });
+        privacyDetailedChildren.classList.toggle('active');
         setTimeout(() => {
             privacyDetailed.classList.toggle('active');
         }, 300);
     });
 });
 
-
-// ==================================
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const slider = document.querySelector(".flex");
-//     const slides = slider.children;
-//     const dots = document.querySelectorAll(".rounded-full");
-//     const prevArrow = document.querySelector(".fill-white");
-//     const nextArrow = document.querySelector(".rotate-180");
-//     let currentIndex = 0;
-//     let slideInterval;
-
-//     function scrollToSlide(index) {
-//         const width = slider.clientWidth;
-//         slider.scrollLeft = width * index;
-//         currentIndex = index;
-//         updateDots();
-//     }
-
-//     function updateDots() {
-//         dots.forEach((dot, index) => {
-//             dot.classList.toggle("bg-gray-500", index === currentIndex); // Change the color to indicate active dot
-//         });
-//     }
-
-//     function startSlideShow() {
-//         slideInterval = setInterval(() => {
-//             let nextIndex = (currentIndex + 1) % slides.length;
-//             scrollToSlide(nextIndex);
-//         }, 3000); // Change slide every 3 seconds
-//     }
-
-//     dots.forEach((dot, index) => {
-//         dot.addEventListener("click", () => scrollToSlide(index));
-//     });
-
-//     prevArrow.addEventListener("click", () => {
-//         let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-//         scrollToSlide(prevIndex);
-//     });
-
-//     nextArrow.addEventListener("click", () => {
-//         let nextIndex = (currentIndex + 1) % slides.length;
-//         scrollToSlide(nextIndex);
-//     });
-
-//     startSlideShow();
-
-//     // Pause the slideshow on hover
-//     slider.addEventListener("mouseenter", () => clearInterval(slideInterval));
-//     slider.addEventListener("mouseleave", startSlideShow);
-// });
+const privacyDetailedChildren2 = document.querySelectorAll('.privacy-detailed-child');
 
 
-/*
-In this script:
+document.addEventListener('click', function (event) {
+    // Check if the click is outside privacyDetailedChildren
+    let isClickInside = Array.from(privacyDetailedChildren2).some(child => child.contains(event.target));
 
-scrollToSlide function scrolls the slider to the specified index.
-updateDots function updates the appearance of the dots based on the current index.
-startSlideShow function sets up an interval to automatically move to the next slide.
-Event listeners are added to the dots, arrows, and the slider itself for interaction and auto-slide functionality.
-Please note:
+    if (!isClickInside && privacyDetailedChildren2[0].classList.contains('active')) {
+        // Close privacyDetailedChildren
+        privacyDetailedChildren2.forEach(child => {
+            child.classList.remove('active');
+        });
 
-Adjust the bg-gray-500 class in updateDots function to match your active dot styling.
-Ensure the scroll behavior is smooth. You might need to adjust your CSS or add scroll-behavior: smooth; to the slider.
-This script assumes the structure and class names provided in your HTML. If there are any changes in your HTML structure, you'll need to update the selectors in the JavaScript accordingly.
-The script uses modulo arithmetic to loop through the slides infinitely in both directions.
-The auto-slide pauses when hovering over the slider and resumes on mouse leave.
+        // Wait 0.5s then close privacyDetailed
+        setTimeout(() => {
+            privacyDetailed.classList.remove('active');
+        }, 300);
+    }
+});
 
-*/
+// Close when user press esc
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && privacyDetailed.classList.contains('active')) {
+        privacyDetailedChildren.classList.toggle('active');
+        setTimeout(() => {
+            privacyDetailed.classList.toggle('active');
+        }, 300);
+    }
+});
+
+// Slider
+document.addEventListener("DOMContentLoaded", () => {
+    const sliderSection = document.querySelector(".slider-section");
+    const slider = document.querySelector(".slider");
+    const slides = Array.from(slider.children);
+    const dots = document.querySelectorAll(".dot");
+    const prevArrow = document.querySelector(".prevArrow");
+    const nextArrow = document.querySelector(".nextArrow");
+    let currentIndex = 1; // Start from 1, assuming the first slide is a duplicate
+    let slideInterval;
+
+    // Duplicate first and last slides
+    const firstSlide = slides[0].cloneNode(true);
+    const lastSlide = slides[slides.length - 1].cloneNode(true);
+    slider.insertBefore(lastSlide, slides[0]);
+    slider.appendChild(firstSlide);
+
+    // Function to scroll to a specific slide
+    function scrollToSlide(index) {
+        if (window.innerWidth < 1024) {
+            const width = slider.clientWidth;
+            slider.scrollTo({
+                left: width * index,
+                behavior: 'smooth'
+            });
+            currentIndex = index;
+            // Update dots considering the duplicated slides
+            updateDots();
+        } else {
+            const width = slider.clientWidth;
+            slider.scrollLeft = width * index;
+            currentIndex = index;
+            updateDots();
+        }
+    }
+
+    // Function to update the appearance of the dots
+    function updateDots() {
+        // Assuming the first and last slides are duplicated
+        let adjustedIndex = currentIndex - 1; // Adjust index to map with the actual slides
+
+        // Account for wrapping around due to the infinite loop
+        if (adjustedIndex < 0) {
+            adjustedIndex = dots.length - 1; // Last dot should be active
+        } else if (adjustedIndex >= dots.length) {
+            adjustedIndex = 0; // First dot should be active
+        }
+
+        // Update the active state of dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === adjustedIndex);
+        });
+    }
+
+    // Function to start the slideshow
+    function startSlideShow() {
+        slideInterval = setInterval(() => {
+            let nextIndex = (currentIndex + 1) % (slides.length + 2);
+            scrollToSlide(nextIndex);
+
+            // Jump to the first slide if we're at the end
+            if (nextIndex === slides.length + 1) {
+                setTimeout(() => {
+                    slider.scrollTo({
+                        left: slider.clientWidth,
+                        behavior: 'auto'
+                    });
+                    currentIndex = 1;
+                }, 500); // Adjust the timeout to match your scroll animation duration
+            }
+        }, 4000);
+    }
+
+    // Add click event listeners to the dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            let adjustedIndex = index + 1; // Adjust index to map with the actual slides
+            scrollToSlide(adjustedIndex); // Adjust index to map with the actual slides
+
+            if (index = 0){
+                setTimeout(() => {
+                    slider.scrollTo({
+                        left: slider.clientWidth * slides.length,
+                        behavior: 'auto'
+                    });
+                    currentIndex = slides.length;
+                }, 500);// Adjust the timeout to match your scroll animation duration
+            }
+        });
+    });
+
+    // Add click event listener to the previous arrow
+    prevArrow.addEventListener("click", () => {
+        let prevIndex = (currentIndex - 1 + slides.length + 2) % (slides.length + 2);
+        scrollToSlide(prevIndex);
+
+        // Jump to the last slide if we're at the start
+        if (prevIndex === 0) {
+            setTimeout(() => {
+                slider.scrollTo({
+                    left: slider.clientWidth * slides.length,
+                    behavior: 'auto'
+                });
+                currentIndex = slides.length;
+            }, 500);
+        }
+    });
+
+    // Add click event listener to the next arrow
+    nextArrow.addEventListener("click", () => {
+        let nextIndex = (currentIndex + 1) % (slides.length + 2);
+        scrollToSlide(nextIndex);
+
+        if (nextIndex === slides.length + 1) {
+            setTimeout(() => {
+                slider.scrollTo({
+                    left: slider.clientWidth,
+                    behavior: 'auto'
+                });
+                currentIndex = 1;
+            }, 500);
+        }
+    });
+
+    // Start with the first original slide (not the duplicated one)
+    scrollToSlide(1);
+    startSlideShow();
+
+    // Pause the slideshow on hover
+    sliderSection.addEventListener("mouseenter", () => clearInterval(slideInterval));
+    sliderSection.querySelectorAll("*").forEach(item => {
+        item.addEventListener("mouseenter", () => clearInterval(slideInterval));
+    });
+    sliderSection.addEventListener("mouseleave", startSlideShow);
+});

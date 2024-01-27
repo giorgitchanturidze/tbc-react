@@ -504,14 +504,13 @@
       </div>
     </section>
     <!-- Slider -->
-    <section class="bg-lightgrey relative px-5 pt-[21px] lg:py-9 ">
-
+    <section class="slider-section bg-lightgrey relative px-5 pt-[21px] lg:py-9 ">
       <div class="max-w-[980px] mx-auto w-full mb-[13px] lg:mb-[33px]">
         <h3 class="text-[18px] leading-[28px]">პროექტის პარტნიორები</h3>
       </div>
-      <!-- Sliders -->
+      <!-- Mobile Sliders -->
       <div class="lg:h-[224px] h-[371px] w-full relative">
-        <div class="flex w-full h-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+        <div class="flex slider transition-all transform duration-300 ease-in-out w-full h-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
           <!-- Slide 1 -->
           <div
             class="snap-center w-full shrink-0 h-full flex flex-col justify-center items-center gap-[42px] lg:flex-row lg:gap-[122px]">
@@ -548,21 +547,21 @@
         </div>
         <!-- Dots -->
         <div
-          class="absolute bottom-[21px] left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-[10px]">
-          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
-          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
-          <div class="w-[8px] h-[8px] rounded-full bg-white"></div>
+          class="*:cursor-pointer absolute bottom-[21px] left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-[10px]">
+          <div class="dot w-[8px] h-[8px] rounded-full bg-white [&.active]:opacity-100 opacity-60 transition-all duration-300 ease-in-out active"></div>
+          <div class="dot w-[8px] h-[8px] rounded-full bg-white [&.active]:opacity-100 opacity-60 transition-all duration-300 ease-in-out"></div>
+          <div class="dot w-[8px] h-[8px] rounded-full bg-white [&.active]:opacity-100 opacity-60 transition-all duration-300 ease-in-out"></div>
         </div>
         <!-- Arrows -->
         <div
-          class="absolute hidden lg:flex top-1/2 left-0 transform -translate-y-1/2 justify-between items-center gap-[10px] w-full  h-10">
-          <div class="flex w-[18px] h-[35px] justify-center items-center">
-            <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41">
+          class="absolute *:cursor-pointer hidden lg:flex top-1/2 left-0 lg:px-[100px] transform -translate-y-1/2 justify-between items-center gap-[10px] w-full  h-10">
+          <div class="prevArrow group *:pointer-events-none flex w-[18px] h-[35px] justify-center items-center">
+            <svg class="group-hover:opacity-60 transition-all duration-300 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41">
               <path class="stroke-white" d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path>
             </svg>
           </div>
-          <div class="flex w-[18px] h-[35px] justify-center items-center">
-            <svg class="fill-white rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41">
+          <div class="nextArrow group  flex w-[18px] h-[35px] justify-center items-center">
+            <svg class="group-hover:opacity-60 transition-all duration-300 ease-in-out rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 41">
               <path class="stroke-white" d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"></path>
             </svg>
           </div>
@@ -768,7 +767,7 @@
   </footer>
   <div class="fixed privacy-detailed group hidden [&.active]:block bg-primary/60 w-full h-full top-0 left-0 z-10">
     <div
-      class="ml-auto overflow-x-hidden transform transition-all duration-300 ease-in-out hide-scrollbar overflow-y-auto flex flex-col gap-5 max-w-0 [&.active]:max-w-[686px] w-[90%] h-full bg-darkGrey [&.active]:px-5 [&.active]:lg:px-[60px] pt-[23px] lg:pt-[29px] pb-[20px] *:text-tbc2 [&>p]:text-[14px] [&>p]:leading-[20px] [&>p]:mt-[25px]">
+      class="ml-auto privacy-detailed-child overflow-x-hidden transform transition-all duration-300 ease-in-out hide-scrollbar overflow-y-auto flex flex-col gap-5 max-w-0 [&.active]:max-w-[686px] w-[90%] h-full bg-darkGrey [&.active]:px-5 [&.active]:lg:px-[60px] pt-[23px] lg:pt-[29px] pb-[20px] *:text-tbc2 [&>p]:text-[14px] [&>p]:leading-[20px] [&>p]:mt-[25px] z-20">
       <svg class="close-privacy cursor-pointer fill-tbc2 w-[24px] shrink-0 ml-auto" preserveAspectRatio="xMidYMid meet"
         data-bbox="82.189 55.096 481.811 481.808" xmlns="http://www.w3.org/2000/svg"
         viewBox="82.189 55.096 481.811 481.808" role="presentation" aria-hidden="true">
@@ -779,7 +778,7 @@
         </g>
       </svg>
       <span class="text-[22px] leading-[31px] lg:mt-[26px] mt-[23px]">წესები და პირობები</span>
-      <p class="">
+      <p>
         წინამდებარე ვებ-გვერდის გამოყენება რეგულირდება სს „თიბისი ბანკის“ (საიდენტიფიკაციო ნომერი: 204854595, მისამართი:
         თბილისი, კ. მარჯანიშვილის ქ. #7) მიერ დადგენილი წესებითა და პირობებით. <br><br>
         ტერმინები „ბანკი“, „ჩვენ“ გულისხმობს სს „თიბისი ბანკს“ (ასევე მისი ჯგუფის წევრ მონათესავე, შვილობილ, აფილირებულ
@@ -871,6 +870,7 @@
         “სს „თიბისი ბანკის“ მომსახურებით სარგებლობისას მომხმარებელთა დაცვის, კიბერუსაფრთოებისა და კონფიდენციალურობის
         დაცვის პრინციპები ხელმისაწვდომია ვებ-გვერდზე <a class="font-black font-[arial] underline" href="#">www.tbcbank.ge</a>”
       </p>
+      <button class="close-privacy hover:bg-tbc lg:mt-[90px] rounded-[4px] hover:!text-white transition-all duration-500 ease-in-out py-[8px] px-3 bg-darkwhite  lg:px-8 lg:py-[9px] !text-primary mt-[190px] text-[16px] leading-[22px]">დახურვა</button>
     </div>
   </div>
   <!-- main js -->
