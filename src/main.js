@@ -79,7 +79,6 @@ const privacy = document.querySelectorAll('.privacy');
 const privacyDetailed = document.querySelector('.privacy-detailed');
 // Privacy detailed children
 const privacyDetailedChildren = document.querySelector('.privacy-detailed-child');
-console.log(privacyDetailedChildren);
 
 privacy.forEach((item) => {
     item.addEventListener('click', (e) => {
@@ -151,6 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.insertBefore(lastSlide, slides[0]);
     slider.appendChild(firstSlide);
 
+    const doubledSlides = Array.from(slider.children);
+
     // Function to scroll to a specific slide
     function scrollToSlide(index) {
         if (window.innerWidth < 1024) {
@@ -164,9 +165,37 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDots();
         } else {
             const width = slider.clientWidth;
-            slider.scrollLeft = width * index;
-            currentIndex = index;
-            updateDots();
+            setTimeout(() => {
+                slider.scrollLeft = width * index;
+                currentIndex = index;
+                updateDots();
+            }, 700);
+            // remove active class from all slides
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+            console.log('currentIndex: ' + index);
+            console.log(doubledSlides);
+            // give active to the slide
+            setTimeout(() => {
+                if (index == 1) {
+                    doubledSlides[1].classList.add('active');
+                    doubledSlides[4].classList.add('active');
+                } else if (index == 3) {
+                    doubledSlides[3].classList.add('active');
+                    doubledSlides[0].classList.add('active');
+                } else if (index == 2) {
+                    doubledSlides[2].classList.add('active');
+                } else if (index == 4) {
+                    doubledSlides[4].classList.add('active');
+                    doubledSlides[1].classList.add('active');
+                } else if (index == 0) {
+                    doubledSlides[0].classList.add('active');
+                    doubledSlides[3].classList.add('active');
+                }
+            }, 700);
+
+
         }
     }
 
@@ -211,16 +240,27 @@ document.addEventListener("DOMContentLoaded", () => {
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
             let adjustedIndex = index + 1; // Adjust index to map with the actual slides
-            scrollToSlide(adjustedIndex); // Adjust index to map with the actual slides
 
-            if (index = 0){
+            if (index == 0 && dots[2].classList.contains('active')) {
+                scrollToSlide(4);
+                setTimeout(() => {
+                    slider.scrollTo({
+                        left: slider.clientWidth,
+                        behavior: 'auto'
+                    });
+                    currentIndex = 1;
+                }, 500);
+            } else if (index == 2 && dots[0].classList.contains('active')) {
+                scrollToSlide(0);
                 setTimeout(() => {
                     slider.scrollTo({
                         left: slider.clientWidth * slides.length,
                         behavior: 'auto'
                     });
                     currentIndex = slides.length;
-                }, 500);// Adjust the timeout to match your scroll animation duration
+                }, 500);
+            } else {
+                scrollToSlide(adjustedIndex);
             }
         });
     });
@@ -264,8 +304,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Pause the slideshow on hover
     sliderSection.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    sliderSection.querySelectorAll("*").forEach(item => {
-        item.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    });
     sliderSection.addEventListener("mouseleave", startSlideShow);
 });
