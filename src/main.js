@@ -153,6 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const doubledSlides = Array.from(slider.children);
 
     // Function to scroll to a specific slide
+    /**
+     * Function to scroll to a specific slide.
+     * @param {number} index - The index of the slide to scroll to.
+     */
     function scrollToSlide(index) {
         if (window.innerWidth < 1024) {
             const width = slider.clientWidth;
@@ -174,8 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
             slides.forEach((slide) => {
                 slide.classList.remove('active');
             });
-            console.log('currentIndex: ' + index);
-            console.log(doubledSlides);
             // give active to the slide
             setTimeout(() => {
                 if (index == 1) {
@@ -194,8 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     doubledSlides[3].classList.add('active');
                 }
             }, 700);
-
-
         }
     }
 
