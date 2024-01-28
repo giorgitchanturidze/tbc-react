@@ -12,7 +12,7 @@ hamMenu.addEventListener('click', () => {
 
 // If user clicks outside the menu, close it
 window.addEventListener('click', (e) => {
-    if (e.target !== hamMenu && !hamMenu.contains(e.target) && hamMenu.classList.contains('active')) {
+    if (e.target !== hamMenu && !hamMenu.contains(e.target) && hamMenu.classList.contains('active') && e.target !== document.querySelector('nav') && !document.querySelector('nav').contains(e.target)){
         hamMenu.classList.toggle('active');
         hamMenu.classList.toggle('-rotate-45');
         hamMenu.classList.toggle('h-[33px]');
@@ -158,7 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {number} index - The index of the slide to scroll to.
      */
     function scrollToSlide(index) {
+        // Animation
         if (window.innerWidth < 1024) {
+            // Mobile
             const width = slider.clientWidth;
             slider.scrollTo({
                 left: width * index,
@@ -168,12 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update dots considering the duplicated slides
             updateDots();
         } else {
+            //  Desktop
             const width = slider.clientWidth;
             setTimeout(() => {
                 slider.scrollLeft = width * index;
-                currentIndex = index;
                 updateDots();
             }, 700);
+            currentIndex = index;
             // remove active class from all slides
             slides.forEach((slide) => {
                 slide.classList.remove('active');

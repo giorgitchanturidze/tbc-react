@@ -63,7 +63,7 @@
 This project is a static page clone of the [TBC X USAID](https://www.tbcacademy.ge/usaid) website. It's built using HTML, JavaScript, and Tailwind CSS.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24"> <a href="#" >TBC X USAID Clone GitHub Page</a>
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="14"> <a href="https://giorgitchanturidze.github.io/tbc-react/src/" >TBC X USAID Clone GitHub Page</a>
 </div>
 
 
